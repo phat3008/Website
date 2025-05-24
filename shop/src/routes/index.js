@@ -41,16 +41,16 @@ export const routes = [
         isShowHeader: false
     },
     {
-        path:'/product-details',
+        path:'/product-details/:id',
         page: ProductDetailsPage,
         isShowHeader: true
     },
-        {
+    {
         path:'/profile-user',
         page: ProfilePage,
         isShowHeader: true
     },
-            {
+    {
         path:'/system/admin',
         page: AdminPage,
         isShowHeader: false,

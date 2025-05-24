@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './slides/counterSlide'
+import productReducer from './slides/productSilde'
 import userReducer from './slides/userSlide'
 
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    product: productReducer,
     user: userReducer
   },
 })

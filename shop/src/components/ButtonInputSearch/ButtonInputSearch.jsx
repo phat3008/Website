@@ -10,8 +10,8 @@ const ButtonInputSearch = (props) => {
             bordered, backgroundColorInput = '#fff',
             backgroundColorButton = 'rgb(246, 8, 24)',
             colorButton = '#ffffff'
-    } 
-    = props
+    } = props
+
   return (
     <div style={{ display: 'flex', }}>
         <InputComponent 
@@ -19,6 +19,7 @@ const ButtonInputSearch = (props) => {
           placeholder={placeholder}
           variant={bordered === false ? 'borderless' : 'outlined'}
           style={{ backgroundColor: backgroundColorInput }}
+          {...props}
         />
         <ButtonComponent
           size={size} 

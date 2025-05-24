@@ -14,6 +14,7 @@ import * as UserService from '../../services/UserService'
 import { resetUser } from '../../redux/slides/userSlide'
 import Loading from '../LoadingComponent/Loading';
 import { isPending } from '@reduxjs/toolkit';
+import { searchProduct } from '../../redux/slides/productSilde';
 const  { Search } = Input
 
 const HeaderComponents = ({isHiddenSearch = false, isHiddenCart = false}) => {
@@ -22,6 +23,7 @@ const HeaderComponents = ({isHiddenSearch = false, isHiddenCart = false}) => {
   const dispatch = useDispatch()
   const [userName, setUserName] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
+  const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(false)
   const handleNavigateLogin = () => {
     navigate('/sign-in')
@@ -51,11 +53,17 @@ const handleLogout = async () =>{
       )}
     </div>
   ); 
+
+  const onSearch = (e) => {
+    setSearch(e.target.value)
+    dispatch(searchProduct(e.target.value))
+  }
+
   return (
     <div style={{width: '100%', background: 'rgb(246, 8, 24)', display:'flex', justifyContent: 'center'}}>
       <WrapperHeader style={{ justifyContent: isHiddenSearch && isHiddenSearch ? 'space-between' : 'unset'}}>
         <Col span={5}>
-        <WrapperTextHeader>
+          <WrapperTextHeader style={{ cursor: 'pointer', fontWeight: 'bold' }} onClick={() => { navigate('/') }}>
           THEGIOIDIENTU
         </WrapperTextHeader>
         </Col>
@@ -66,7 +74,7 @@ const handleLogout = async () =>{
             variant="borderless"
             textButton="Tìm kiếm"
               placeholder="Nhập tên sản phẩm bạn muốn tìm kiếm"
-              // onSearch={onSearch}
+              onChange={onSearch}
             />
           </Col>
         )}

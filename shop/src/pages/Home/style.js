@@ -25,6 +25,7 @@ export const WrapperButtonMore = styled(ButtonComponent)`
   }
     weight: 100%;
     text-align: center;
+    cursor: ${(props) => props.disable ? 'not-allowed' : 'pointer'}
 `
 
 export const WrapperProducts = styled.div`
