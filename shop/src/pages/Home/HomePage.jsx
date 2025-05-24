@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TypeProduct from '../../components/TypeProduct/TypeProduct'
 import { WrapperButtonMore, WrapperProducts, WrapperTypeProduct } from './style'
 import SliderComponent from '../../components/SliderComponent/SliderComponent'
@@ -14,18 +14,23 @@ import { useDebounce } from '../../hooks/useDebounce'
 
 const HomePage = () => {
   const searchProduct = useSelector((state) => state?.product?.search)
-  const searchDebounce = useDebounce(searchProduct, 1000)
+  const searchDebounce = useDebounce(searchProduct, 500)
   const [pending, setPending] = useState(false)
   const [limit, setLimit] = useState(6)
-  // const [page, setLimit] = useState(6)
-  const arr = ['Smartphone', 'Laptop', 'Camera', 'Thiết bị hỗ trợ']
+  const [TypeProducts, setTypeProducts] = useState([])
 
   const fetchProductAll = async (context) => {
-    console.log('context', context)
     const limit = context?.queryKey && context?.queryKey[1]
     const search = context?.queryKey && context?.queryKey[2]
     const res = await ProductService.getAllProduct(search, limit)
        return res
+  }
+ 
+  const fetchAllTypeProduct = async () => {
+    const res = await ProductService.getAllTypeProduct()
+    if(res?.status === 'OK') {
+      setTypeProducts(res?.data)
+    }
   }
 
   const { isPending, data: products, isPreviousData } = useQuery({
@@ -33,13 +38,17 @@ const HomePage = () => {
     queryFn: fetchProductAll,
     retry : 3, retryDelay: 1000, keepPreviousData: true
   })
-  console.log('isPreviousData', products )
+
+  useEffect(() => {
+    fetchAllTypeProduct()
+  }, [])
+
 
     return (
     <Loading isPending={isPending || pending}>
       <div style={{ width: '1270px', margin: '0 auto' }}>
         <WrapperTypeProduct>
-        {arr.map((item) => {
+          {TypeProducts.map((item) => {
           return (
             <TypeProduct name={item} key={item} />
           )

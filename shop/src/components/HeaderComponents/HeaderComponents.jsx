@@ -109,7 +109,7 @@ const handleLogout = async () =>{
         </WrapperHeaderAccount>
         </Loading>
         {!isHiddenCart &&(
-          <div>
+          <div onClick={() => navigate('/order')} style={{cursor: 'pointer'}}>
             <Badge count={4} size="small">
             <ShoppingOutlined style={{ fontSize: '30px', color: '#fff' }} />
             </Badge>

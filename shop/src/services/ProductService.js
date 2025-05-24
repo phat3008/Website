@@ -7,9 +7,15 @@ export const getAllProduct = async (search, limit) => {
         res = await axios.get(`${process.env.REACT_APP_API_KEY}/product/get-all?filter=name&filter=${search}&limit=${limit}`)
     }else {
          res = await axios.get(`${process.env.REACT_APP_API_KEY}/product/get-all?limit=${limit}`)
-
     }
     return res.data
+}
+
+export const getProductType = async (type, page, limit) => {
+    if (type) {
+        const res = await axios.get(`${process.env.REACT_APP_API_KEY}/product/get-all?filter=type&filter=${type}&limit=${limit}&page=${page}`)
+        return res.data
+    } 
 }
 
 export const createProduct = async (data) => {
@@ -46,5 +52,10 @@ export const deleteManyProduct = async (data, access_token) => {
             token: `Bearer ${access_token}`,
         }
     })
+    return res.data
+}
+
+export const getAllTypeProduct = async () => {
+    const res = await axios.get(`${process.env.REACT_APP_API_KEY}/product/get-all-type`)
     return res.data
 }
