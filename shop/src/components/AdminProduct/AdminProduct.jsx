@@ -35,7 +35,8 @@ const AdminProduct = () => {
     countInStock: '',
     rating: '',
     description: '',
-    newType:''
+    newType:'',
+    discount: ''
   })
   const [stateProductDetails, setStateProductDetails] = useState({
     name: '',
@@ -45,6 +46,7 @@ const AdminProduct = () => {
     countInStock: '',
     rating: '',
     description: '',
+    discount: '',
   })
 
   const [form] = Form.useForm();
@@ -58,7 +60,7 @@ const AdminProduct = () => {
         price,
         rating,
         description,
-        countInStock: countInStock } = data
+        countInStock: countInStock, discount } = data
       const res = ProductService.createProduct({
         name,
         image,
@@ -66,7 +68,8 @@ const AdminProduct = () => {
         price,
         countInStock,
         rating,
-        description
+        description,
+        discount
       })
       return res
     }
@@ -129,6 +132,7 @@ const AdminProduct = () => {
         countInStock: res?.data?.countInStock,
         rating: res?.data?.rating,
         description: res?.data?.description,
+        discount:res?.data?.discount
       })
     }
     setIsPendingUpdate(false)
@@ -385,6 +389,7 @@ console.log('type', typeProduct)
       countInStock: '',
       rating: '',
       description: '',
+      discount: ''
     })
     form.resetFields()
   };
@@ -398,6 +403,7 @@ console.log('type', typeProduct)
       countInStock: stateProduct.countInStock,
       rating: stateProduct.rating,
       description: stateProduct.description,
+      discount: stateProduct.discount
     }
     mutation.mutate(params, {
       onSettled: () => {
@@ -551,6 +557,14 @@ console.log('type', typeProduct)
             </Form.Item>
 
             <Form.Item
+              label="Discount"
+              name="discount"
+              rules={[{ required: true, message: 'Please input your discount of product !' }]}
+            >
+              <InputComponent value={stateProduct.discount} onChange={handleOnChange} name="discount" />
+            </Form.Item>
+
+            <Form.Item
               label="Image"
               name="image"
               rules={[{ required: true, message: 'Please input your count image!' }]}
@@ -633,6 +647,14 @@ console.log('type', typeProduct)
               rules={[{ required: true, message: 'Please input your count rating!' }]}
             >
               <InputComponent value={stateProductDetails.rating} onChange={handleOnchangeDetails} name="rating" />
+            </Form.Item>
+
+            <Form.Item
+              label="Discount"
+              name="discount"
+              rules={[{ required: true, message: 'Please input your discount of product!' }]}
+            >
+              <InputComponent value={stateProduct.discount} onChange={handleOnchangeDetails} name="discount" />
             </Form.Item>
 
             <Form.Item

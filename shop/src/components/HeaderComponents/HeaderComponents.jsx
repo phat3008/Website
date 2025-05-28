@@ -24,6 +24,7 @@ const HeaderComponents = ({isHiddenSearch = false, isHiddenCart = false}) => {
   const [userName, setUserName] = useState('')
   const [userAvatar, setUserAvatar] = useState('')
   const [search, setSearch] = useState('')
+  const order = useSelector((state) => state.order)
   const [loading, setLoading] = useState(false)
   const handleNavigateLogin = () => {
     navigate('/sign-in')
@@ -46,11 +47,11 @@ const handleLogout = async () =>{
 
   const content = (
     <div>
-      <WrapperContentPopup onClick ={handleLogout}>Đăng xuất</WrapperContentPopup>
-      <WrapperContentPopup onClick={() => navigate('/profile-user')}>Thông tin người dùng</WrapperContentPopup>
       {user?.isAdmin && (
         <WrapperContentPopup onClick={() => navigate('/system/admin')}>Quản lý hệ thống</WrapperContentPopup>
       )}
+      <WrapperContentPopup onClick={() => navigate('/profile-user')}>Thông tin người dùng</WrapperContentPopup>
+      <WrapperContentPopup onClick ={handleLogout}>Đăng xuất</WrapperContentPopup>
     </div>
   ); 
 
@@ -110,7 +111,7 @@ const handleLogout = async () =>{
         </Loading>
         {!isHiddenCart &&(
           <div onClick={() => navigate('/order')} style={{cursor: 'pointer'}}>
-            <Badge count={4} size="small">
+            <Badge count={order?.orderItems?.length} size="small">
             <ShoppingOutlined style={{ fontSize: '30px', color: '#fff' }} />
             </Badge>
             <WrapperTextHeaderSmall>Giỏ hàng</WrapperTextHeaderSmall>

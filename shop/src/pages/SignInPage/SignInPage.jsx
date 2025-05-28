@@ -5,7 +5,7 @@ import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 import imageLogo from '../../assets/images/logo-logoin.jpg'
 import { Image } from 'antd'
 import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import * as UserService from '../../services/UserService'
 import { useMutationHooks } from '../../hooks/useMutationHook'
 import Loading from '../../components/LoadingComponent/Loading'
@@ -15,6 +15,7 @@ import { updateUser } from '../../redux/slides/userSlide'
 
 const SignInPage = () => {
   const [isShowPassword, setIsShowPassword ] = useState(false)
+  const location = useLocation()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -27,7 +28,13 @@ const SignInPage = () => {
   const { data, isPending, isSuccess } = mutation
 
 useEffect(() => {
+  console.log('location', location)
   if (isSuccess && data?.status === 'OK') {
+    if(location?.state) {
+      navigate(location?.state)
+    }else {
+      navigate('/')
+    }
     localStorage.setItem('access_token', JSON.stringify(data?.access_token))
     if (data?.access_token) {
       const decoded = jwtDecode(data?.access_token)
@@ -35,7 +42,7 @@ useEffect(() => {
         handleGetDetailsUser(decoded?.id, data?.access_token)
       }
     }
-    navigate('/')
+
   }
 }, [isSuccess])
 
@@ -109,7 +116,7 @@ useEffect(() => {
           <p>Bạn chưa có tài khoản? <WrapperTextLight onClick={handleNavigateSignup}>Tạo tài khoản</WrapperTextLight></p>
       </WrapperContainerLeft>
       <WrapperContainerRight>
-        <Image src={imageLogo} preview={false} alt="image-logo" height="185px" width="203px" />
+          <Image onClick={() => { navigate('/') }} src={imageLogo} preview={false} alt="image-logo" height="185px" width="203px" />
         <h4>Tất cả có tại Thế giới điện tử</h4>
       </WrapperContainerRight>
       </div>

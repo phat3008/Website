@@ -2,18 +2,24 @@ import { Col, Row, Image } from 'antd'
 import React, { useState } from 'react'
 import ImageProduct from '../../assets/images/test.jpg'
 import ImageProductSmall from '../../assets/images/test1.jpg'
-import { WrapperAddressProduct, WrapperBtnQualityProduct, WrapperInputNumber, WrapperPriceProduct, WrapperPriceTextProduct, WrapperQualityProduct, WrapperStyleColImage, WrapperStyleImageSmall, WrapperStyleNameProduct, WrapperStyleTextSell } from './style'
-import {MinusCircleOutlined, PlusCircleOutlined, StarFilled} from '@ant-design/icons'
+import { WrapperAddressProduct, WrapperInputNumber, WrapperPriceProduct, WrapperPriceTextProduct, WrapperQualityProduct, WrapperStyleColImage, WrapperStyleImageSmall, WrapperStyleNameProduct, WrapperStyleTextSell } from './style'
+import {MinusCircleOutlined, PlusCircleOutlined} from '@ant-design/icons'
 import ButtonComponent from '../ButtonComponent/ButtonComponent'
 import * as ProductService from '../../services/ProductService'
 import { useQuery } from '@tanstack/react-query'
 import Loading from '../LoadingComponent/Loading'
 import { Rate } from 'antd'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { addOrderProduct } from '../../redux/slides/orderSlide'
+import { convertPrice } from '../../utils'
 
 const ProductDetailsComponent = ({ idProduct }) => {
   const [numProduct, setNumProduct] = useState(1)
-  const user = useSelector((state) => state.user) 
+  const user = useSelector((state) => state.user)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const dispatch = useDispatch()
   const onChange = (value) => {
     setNumProduct(value)
   }
@@ -33,11 +39,39 @@ const ProductDetailsComponent = ({ idProduct }) => {
     })
     }
 
-  const { isPending, data: productsDetails } = useQuery({
-    queryKey: ['products-details', idProduct],
-    queryFn: fetchGetDetailsProduct,
-    enabled: !!idProduct 
-  })
+    
+    const { isPending, data: productsDetails } = useQuery({
+      queryKey: ['products-details', idProduct],
+      queryFn: fetchGetDetailsProduct,
+      enabled: !!idProduct 
+    })
+    const handleAddOrderProduct = () => {
+      if(!user?.id) {
+        navigate('/sign-in', {state: location?.pathname})
+      }else {
+          // {
+          //   name: { type: String, required: true },
+          //   amount: { type: Number, required: true },
+          //   image: { type: String, required: true },
+          //   price: { type: Number, required: true },
+          //   product: {
+          //     type: mongoose.Schema.Types.ObjectId,
+          //     ref: 'Product',
+          //     require: true,
+          //   },
+          // },
+        dispatch(addOrderProduct({
+          orderItem: {
+            name: productsDetails?.name,
+            amount: numProduct,
+            image: productsDetails?.image,
+            price: productsDetails?.price,
+            product: productsDetails?._id
+          }
+        }))
+      }
+    }
+    console.log('productDetails', productsDetails, user)
   return (
     <Loading isPending={isPending}>
     <Row style={{ padding: '16px', background: '#fff', borderRadius: '5px' }}>
@@ -69,7 +103,7 @@ const ProductDetailsComponent = ({ idProduct }) => {
           </div>
           <WrapperPriceProduct>
             <WrapperPriceTextProduct>
-              {productsDetails?.price?.toLocaleString('vi-VN')} đ
+              {convertPrice(productsDetails?.price)}
             </WrapperPriceTextProduct>
           </WrapperPriceProduct>
           <WrapperAddressProduct>
@@ -99,6 +133,7 @@ const ProductDetailsComponent = ({ idProduct }) => {
                   border: 'none',
                   borderRadius: '4px',
                 }}
+                onClick={handleAddOrderProduct}
                 textButton={'Chọn Mua'}
                 styleTextButton={{ color: '#fff', fontSize: '16px', fontWeight:'700' }}
             ></ButtonComponent>
