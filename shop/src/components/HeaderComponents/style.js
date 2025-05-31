@@ -1,16 +1,17 @@
 import { Row } from 'antd';
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
 export const WrapperHeader = styled(Row)`
     background-Color: rgb(246, 8, 24);
-    align-item:center;
+    align-item: center;
     gap: 16px;
     flex-wrap: nowrap; 
     width: 1270px;
     padding: 10px 0;
 `
 
-export const WrapperTextHeader = styled.span`
+export const WrapperTextHeader = styled(Link)`
     font-size: 24px;
     color: #fff;
     font-weight: bold;

@@ -1,6 +1,6 @@
 import { Checkbox } from 'antd';
 import React, { useEffect, useMemo, useState } from 'react';
-import { WrapperCountOrder, WrapperInfo, WrapperItemOrder, WrapperLeft, WrapperListOrder, WrapperRight, WrapperStyleHeader, WrapperTotal,
+import { WrapperCountOrder, WrapperInfo, WrapperItemOrder, WrapperLeft, WrapperListOrder, WrapperRight, WrapperStyleHeader, WrapperStyleHeaderDelivery, WrapperTotal,
 } from './style';
 import { DeleteOutlined, MinusOutlined, PlusOutlined,
 } from '@ant-design/icons';
@@ -18,6 +18,7 @@ import Loading from '../../components/LoadingComponent/Loading';
 import * as message from '../../components/Message/Message'
 import { updateUser } from '../../redux/slides/userSlide';
 import { useNavigate } from 'react-router-dom';
+import StepComponent from '../../components/StepComponent/StepComponent'
 
 const OrderPage = () => {
   const order = useSelector((state) => state.order)
@@ -43,11 +44,15 @@ const OrderPage = () => {
       setListChecked([...listChecked, e.target.value])
     }
   };
-  const handleChangeCount = (type, idProduct) => {
+  const handleChangeCount = (type, idProduct, limited) => {
     if (type === 'increase') {
-      dispatch(increaseAmount({ idProduct }))
+      if(!limited){
+        dispatch(increaseAmount({ idProduct }))
+      }
     } else {
-      dispatch(decreaseAmount({ idProduct }))
+      if(!limited) {
+        dispatch(decreaseAmount({ idProduct }))
+      }
     }
   }
 
@@ -99,21 +104,23 @@ const OrderPage = () => {
 
   const priceDiscountMemo = useMemo(() => {
     const result = order?.orderItemsSelected?.reduce((total, cur) => {
-      return total + ((cur.discount * cur.amount))
+      const discountPercent = cur.discount || 0
+      const price = cur.price || 0
+      const amount = cur.amount || 1
+      const discountAmount = (price * discountPercent / 100) * amount
+      return total + discountAmount
     }, 0)
-    if(Number(result)){
-      return result
-    }
-    return 0
-  }, [order])
 
+    return Number(result) || 0
+  }, [order])
+  
   const diliveryPriceMemo = useMemo(() => {
-    if(priceMemo > 200000){
-      return 50000
-    } else if(priceMemo === 0){
+    if(priceMemo >= 200000 && priceMemo < 500000 ){
+      return 10000
+    } else if (priceMemo >= 500000 || order?.orderItemsSelected?.length === 0){
       return 0
-    }else {
-      return 20000
+    } else {
+      return 30000
     }
   }, [priceMemo])
 
@@ -178,13 +185,30 @@ const OrderPage = () => {
       [e.target.name]: e.target.value
     })
   }
-  console.log('stateUserDetails', stateUserDetails)
+
+  const itemsDelivery = [
+    {
+      title: '30.000 VND',
+      description: 'Dưới 200.000 VND',
+    },
+    {
+      title: '10.000 VND',
+      description: 'Từ 200.000 VND đến dưới 500.000',
+    },
+    {
+      title: '0 VND',
+      description: 'Trên 500.000 VND',
+    },
+  ]
   return (
     <div style={{ background: '#f5f5fa', width: '100%', height: '100vh' }}>
       <div style={{ height: '100%', width: '1270px', margin: '0 auto' }}>
         <h3>Giỏ hàng</h3>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <WrapperLeft>
+            <WrapperStyleHeaderDelivery>
+              <StepComponent items={itemsDelivery} current={diliveryPriceMemo === 10000 ? 2 : diliveryPriceMemo === 30000 ? 1 : order?.orderItemsSelected?.length === 0 ? 0: 3}/>
+            </WrapperStyleHeaderDelivery>
             <WrapperStyleHeader>
               <span style={{ display: 'inline-block', width: '390px' }}>
                 <Checkbox onChange={handleOnChangeCheckAll} checked={listChecked?.length === order?.orderItems?.length}></Checkbox>
@@ -208,7 +232,7 @@ const OrderPage = () => {
               {order?.orderItems?.map((order) => {
                 console.log('checkOrder', order)
                 return (
-                  <WrapperItemOrder key={order.product}>
+                  <WrapperItemOrder>
                     <div
                       style={{ width: '390px', display: 'flex', alignItems: 'center', gap: '4px', }}>
                       <Checkbox onChange={onChange} value={order?.product} checked={listChecked.includes(order?.product)}></Checkbox>
@@ -225,11 +249,11 @@ const OrderPage = () => {
                         {convertPrice(order?.price)}
                         </span>
                       <WrapperCountOrder>
-                        <button style={{ border: 'none', background: 'transparent', cursor: 'pointer' }} onClick={() => handleChangeCount('decrease', order?.product)}>
+                        <button style={{ border: 'none', background: 'transparent', cursor: 'pointer' }} onClick={() => handleChangeCount('decrease', order?.product, order?.amount === 1)}>
                           <MinusOutlined style={{ color: '#000', fontSize: '10px' }} />
                         </button>
-                        <WrapperInputNumber defaultValue={order?.amount} value={order?.amount} size="small" />
-                        <button style={{ border: 'none', background: 'transparent', cursor: 'pointer' }} onClick={() => handleChangeCount('increase', order?.product)} >
+                        <WrapperInputNumber defaultValue={order?.amount} value={order?.amount} size="small" min={1} max={order?.countInStock} />
+                        <button style={{ border: 'none', background: 'transparent', cursor: 'pointer' }} onClick={() => handleChangeCount('increase', order?.product, order?.amount === order.countInStock, order?.amount === 1)} >
                           <PlusOutlined style={{ color: '#000', fontSize: '10px' }} />
                         </button>
                       </WrapperCountOrder>
@@ -259,7 +283,7 @@ const OrderPage = () => {
                 </div>
                 <div style={{ display: 'flex',alignItems: 'center', justifyContent: 'space-between' }}>
                   <span>Giảm giá</span>
-                  <span style={{ color: '#000', fontSize: '14px', fontWeight: 'bold' }}>{convertPrice(priceDiscountMemo)}</span>
+                    <span span style={{ color: '#000', fontSize: '14px', fontWeight: 'bold' }}>{convertPrice(priceDiscountMemo)} </span>
                 </div>
                 <div style={{ display: 'flex',alignItems: 'center',justifyContent: 'space-between' }}>
                   <span>Phí giao hàng</span>

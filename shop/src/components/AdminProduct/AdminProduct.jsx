@@ -23,11 +23,9 @@ const AdminProduct = () => {
   const [isPendingUpdate, setIsPendingUpdate] = useState(false)
   const user = useSelector((state) => state?.user)
   const [isModalOpenDelete, setIsModalOpenDelete] = useState(false)
-  const [typeSelect, setTypeSelect] = useState('')
   const searchInput = useRef(null);
   const [fileList] = useState([]);
-  
-  const [stateProduct, setStateProduct] = useState({
+  const inittial = () => ({
     name: '',
     image: '',
     type: '',
@@ -35,19 +33,12 @@ const AdminProduct = () => {
     countInStock: '',
     rating: '',
     description: '',
-    newType:'',
+    newType: '',
     discount: ''
   })
-  const [stateProductDetails, setStateProductDetails] = useState({
-    name: '',
-    image: '',
-    type: '',
-    price: '',
-    countInStock: '',
-    rating: '',
-    description: '',
-    discount: '',
-  })
+  
+  const [stateProduct, setStateProduct] = useState(inittial())
+  const [stateProductDetails, setStateProductDetails] = useState(inittial())
 
   const [form] = Form.useForm();
 
@@ -114,7 +105,6 @@ const AdminProduct = () => {
       return res
     }
   )
-  console.log('mutationDeletedMany', mutationDeletedMany)
 
   const getAllProducts = async () => {
     const res = await ProductService.getAllProduct()
@@ -139,8 +129,12 @@ const AdminProduct = () => {
   }
 
   useEffect(() => {
-    form.setFieldsValue(stateProductDetails)
-  }, [form, stateProductDetails])
+    if (!isModalOpen) {
+      form.setFieldsValue(stateProductDetails)
+    } else {
+      form.setFieldsValue(inittial()) 
+    }
+  }, [form, stateProductDetails, isModalOpen])
 
   useEffect(() => {
     if (rowSelected && isOpenDrawer) {

@@ -16,7 +16,8 @@ return (
         styles={{ header: { width: '200px', height: "200px" }, body: { padding: '10px' } }}
         style={{ width: 200 }}
         cover={<img alt="example" src={image} />}
-        onClick={() => handleDetailsProduct(id)}
+        onClick={() => countInStock !== 0 && handleDetailsProduct(id)}
+        disable={countInStock ===0}
     >
         <img 
             style={{
@@ -33,7 +34,7 @@ return (
             <span style={{ marginRight: '4px'}}>
                 <span>{rating}</span><StarFilled style={{fontSize: '10px', color: 'yellow' }} />
             </span>
-            <WrapperStyleTextSell> | Đã bán {selled || 100 } + </WrapperStyleTextSell>
+            <WrapperStyleTextSell> | Đã bán 100 + </WrapperStyleTextSell>
         </WrapperReportText>
         <WrapperPriceText>
             <span style={{ marginRight: '8px' }}>{convertPrice(price)}</span>
