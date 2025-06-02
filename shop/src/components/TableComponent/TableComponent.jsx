@@ -62,7 +62,7 @@ const TableComponent = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((item, rowIndex) => (
+                        {/* {data.map((item, rowIndex) => (
                             <tr key={item._id || rowIndex}>
                                 {columns.map((col, colIndex) => (
                                     <td key={col.key || col.dataIndex}>
@@ -72,7 +72,7 @@ const TableComponent = (props) => {
                                     </td>
                                 ))}
                             </tr>
-                        ))}
+                        ))} */}
                     </tbody>
                 </table>
             </div>

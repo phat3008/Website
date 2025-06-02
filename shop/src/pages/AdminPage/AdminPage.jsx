@@ -1,15 +1,17 @@
 import { Menu } from 'antd'
 import React, { useState } from 'react'
 import { getItem } from '../../utils';
-import {UserOutlined, AppstoreOutlined } from '@ant-design/icons'
+import { UserOutlined, AppstoreOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 import HeaderComponents from '../../components/HeaderComponents/HeaderComponents';
 import AdminUser from '../../components/AdminUser/AdminUser';
 import AdminProduct from '../../components/AdminProduct/AdminProduct';
+import OrderAdmin from '../../components/OrderAdmin/OrderAdmin';
 
 const AdminPage = () => {
     const items = [
         getItem('Người dùng', 'user', <UserOutlined />),
-        getItem('Sản phẩm', 'product', <AppstoreOutlined />)
+        getItem('Sản phẩm', 'product', <AppstoreOutlined />),
+        getItem('Đơn hàng', 'order', < ShoppingCartOutlined />)
     ];
 
     const [keySelected, setKeySelected] = useState('')
@@ -24,6 +26,10 @@ const AdminPage = () => {
                 return(
                     <AdminProduct />
                 )
+            case 'order':
+                return (
+                    <OrderAdmin />
+                )
             default:
                 return<></>
         }
@@ -36,7 +42,7 @@ const AdminPage = () => {
     return (
     <>
         <HeaderComponents isHiddenSearch isHiddenCart/>
-        <div style={{ display: 'flex', }}>
+        <div style={{ display: 'flex', overflowX: 'hidden'}}>
         <Menu 
             mode="inline"
             style={{
@@ -47,7 +53,7 @@ const AdminPage = () => {
             items={items}
             onClick={handleOnClick}
         />
-            <div style={{ flex: 1, padding: '15px' }}>
+            <div style={{ flex: 1, padding: '15px 0 15px 15px' }}>
                 {renderPage(keySelected)}
             </div>
         </div>

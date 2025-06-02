@@ -16,8 +16,7 @@ return (
         styles={{ header: { width: '200px', height: "200px" }, body: { padding: '10px' } }}
         style={{ width: 200 }}
         cover={<img alt="example" src={image} />}
-        onClick={() => countInStock !== 0 && handleDetailsProduct(id)}
-        disable={countInStock ===0}
+        onClick={() => handleDetailsProduct(id)}
     >
         <img 
             style={{

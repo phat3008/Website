@@ -99,7 +99,7 @@ const handleLogout = async () =>{
             />
           </Col>
         )}
-        <Col span={6} style={{ display: 'flex', gap: '54px', alignItems: 'center'}}>
+        <Col span={6} style={{ display: 'flex', gap: '24px', alignItems: 'center'}}>
         <Loading isPending={loading}> 
         <WrapperHeaderAccount>
           {userAvatar ? (
@@ -110,7 +110,7 @@ const handleLogout = async () =>{
                     objectFit: 'cover',
               }}/>
           ) : (
-          <UserOutlined style={{ fontsize: '30px'}} />
+          <UserOutlined style={{ fontSize: '30px', color: '#fff' }} />
           )}
             {user?.access_token ? (
               <>

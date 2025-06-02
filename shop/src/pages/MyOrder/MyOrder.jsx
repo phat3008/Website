@@ -14,14 +14,15 @@ const MyOrderPage = () => {
   const location = useLocation()
   const { state } = location
   const navigate = useNavigate()
+
   const fetchMyOrder = async () => {
-    const res = await OrderService.getOrderByUserId(state?.id, state?.token)
+    const res = await OrderService.getOrderByUserId(state?.token)
     return res.data 
   }
   const queryOrder = useQuery({
     queryKey: ['orders'],
     queryFn: fetchMyOrder,
-    enabled: !!state?.id && !!state?.token
+    enabled: !!state?.token
   });
   const { isLoading, data } = queryOrder
 
@@ -33,10 +34,9 @@ const MyOrderPage = () => {
     })
   }
 
-  const mutation = useMutationHooks(
-    (data) => {
+  const mutation = useMutationHooks( async (data) => {
       const { id, token, orderItems } = data
-      const res = OrderService.cancelOrder(id, token, orderItems)
+      const res = await OrderService.cancelOrder(id, token, orderItems)
       return res
     }
   )
@@ -61,7 +61,7 @@ const MyOrderPage = () => {
 
   const renderProduct = (data) => {
     return data?.map((order) => {
-      return <WrapperHeaderItem>
+      return <WrapperHeaderItem key={order._id}>
         <img src={order?.image}
           style={{
             width: '70px',
@@ -101,8 +101,8 @@ const MyOrderPage = () => {
                 <WrapperItemOrder key={order?._id}>
                   <WrapperStatus>
                     <span style={{fontSize: '14px', fontWeight: 'bold'}}>Trạng thái</span>
-                    <div><span style={{ color: 'rgb(255, 66, 78' }}> Giao hàng: </span>{`${order.isDelivery ? 'Đã giao hàng' : 'Chưa giao hàng'}`}</div>
-                    <div><span style={{ color: 'rgb(255, 66, 78' }}> Thanh toán: </span>{`${order.isPaid ? 'Đã thanh toán' : 'Chưa thanh toán'}`}</div>
+                    <div><span style={{ color: 'rgb(255, 66, 78)' }}> Giao hàng: </span>{`${order.isDelivery ? 'Đã giao hàng' : 'Chưa giao hàng'}`}</div>
+                    <div><span style={{ color: 'rgb(255, 66, 78)' }}> Thanh toán: </span>{`${order.isPaid ? 'Đã thanh toán' : 'Chưa thanh toán'}`}</div>
                   </WrapperStatus>
                   {renderProduct(order?.orderItems)}
                 <WrapperFooterItem>
@@ -114,6 +114,7 @@ const MyOrderPage = () => {
                   </div>
                   <div style={{display: 'flex', gap: '10px'}}>
                     <ButtonComponent
+                    disabled={order.isDelivery}
                     onClick={() => handleCancelOrder(order)}
                     size={40}
                     styleButton={{
@@ -127,7 +128,7 @@ const MyOrderPage = () => {
                     </ButtonComponent>
                     <ButtonComponent
                       onClick={() => handleDetailsOrder(order?._id)}
-                      size={40}
+                      size="middle"
                       styleButton={{
                         height: '36px',
                         border: '1px solid rgb(11, 116, 229)',

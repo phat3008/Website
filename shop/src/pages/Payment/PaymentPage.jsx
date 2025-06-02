@@ -120,7 +120,7 @@ const PaymentPage = () => {
         address: user?.address,
         phone: user?.phone,
         city: user?.city,
-        paymentMethod: 'paypal',
+        paymentMethod: 'payment',
         itemsPrice: priceMemo,
         shippingPrice: diliveryPriceMemo,
         totalPrice: totalPriceMemo,
@@ -223,26 +223,6 @@ const PaymentPage = () => {
   const handlePayment = (e) => {
     setPayment(e.target.value)
   }
-
-  // const addPaymentScript = async () => {
-  //   const {data} = await PaymentService.getConfig()
-  //   const script = document.createElement('script')
-  //   script.type = 'text/javascript'
-  //   script.src =`https://www.paypal.com/sdk/js?client-id=${data}`
-  //   script.async= true;
-  //   script.onload = () => {
-  //   setSdkReady(true)
-  //   }
-  //   document.body.appendChild(script)
-  // // }
-
-  // useEffect(() => {
-  //   if(!window.paypal) {
-  //     addPaymentScript()
-  //   }else (
-  //     setSdkReady(true)
-  //   )
-  // }, [])
 
   return (
     <div style={{ background: '#f5f5fa', width: '100%', height: '100vh' }}>

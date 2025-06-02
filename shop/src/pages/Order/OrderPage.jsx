@@ -230,9 +230,8 @@ const OrderPage = () => {
             </WrapperStyleHeader>
             <WrapperListOrder>
               {order?.orderItems?.map((order) => {
-                console.log('checkOrder', order)
                 return (
-                  <WrapperItemOrder>
+                  <WrapperItemOrder key={order?.product}>
                     <div
                       style={{ width: '390px', display: 'flex', alignItems: 'center', gap: '4px', }}>
                       <Checkbox onChange={onChange} value={order?.product} checked={listChecked.includes(order?.product)}></Checkbox>

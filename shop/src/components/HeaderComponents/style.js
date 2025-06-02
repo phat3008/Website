@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
 export const WrapperHeader = styled(Row)`
-    background-Color: rgb(246, 8, 24);
-    align-item: center;
+    background-color: rgb(246, 8, 24);
+    align-items: center;
     gap: 16px;
     flex-wrap: nowrap; 
     width: 1270px;
@@ -22,7 +22,7 @@ export const WrapperHeaderAccount = styled.div`
     display: flex;
     align-items: center;
     color: #fff;
-    gap: 10px
+    gap: 10px;
 `
 
 export const WrapperTextHeaderSmall = styled.span`

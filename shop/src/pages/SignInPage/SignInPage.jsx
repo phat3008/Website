@@ -28,7 +28,6 @@ const SignInPage = () => {
   const { data, isPending, isSuccess } = mutation
 
 useEffect(() => {
-  console.log('location', location)
   if (isSuccess && data?.status === 'OK') {
     if(location?.state) {
       navigate(location?.state)
@@ -51,8 +50,6 @@ useEffect(() => {
     dispatch(updateUser({ ...res?.data, access_token: token}))
   }
 
-  console.log('mutation', mutation)
-
   const handleNavigateSignup = () =>{
     navigate('/sign-up')
   }
@@ -70,11 +67,10 @@ useEffect(() => {
       email,
       password
     })
-    console.log('sign-in', email, password)
   }
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#rgb(0, 0, 0, 0.53 ', height: '100vh'}}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#rgb(0, 0, 0, 0.53)', height: '100vh'}}>
       <div style={{ width: '800px', height: '450px', borderRadius: '6px', background: '#fff', display: 'flex'}}>
       <WrapperContainerLeft>
         <h1>Xin Chào</h1>
@@ -99,9 +95,9 @@ useEffect(() => {
           <ButtonComponent
                   disabled={!email.length || !password.length }
                   onClick={handleSignIn}
-                  size={40} 
+                  size="large" 
                   styleButton={{ 
-                    background: 'rgb(255, 163, 169)',
+                    background: 'rgb(219, 7, 22)',
                     height: '48px',
                     width: '100%',
                     border: 'none',

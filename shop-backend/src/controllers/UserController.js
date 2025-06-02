@@ -49,7 +49,7 @@ const loginUser = async (req, res) => {
         }
         const response = await UserService.loginUser(req.body)
         const { refresh_token, ...newResponse } = response
-        // console.log('response', response)
+        console.log('response', response)
         res.cookie('refresh_token', refresh_token, {
             httpOnly: true,
             secure: false,

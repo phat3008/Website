@@ -100,7 +100,7 @@ const SignUpPage = () => {
                 onClick={handleSignup}
                 size={40} 
                 styleButton={{ 
-                  background: 'rgb(255, 163, 169)',
+                  background: 'rgb(219, 7, 22)',
                   height: '48px',
                   width: '100%',
                   border: 'none',
