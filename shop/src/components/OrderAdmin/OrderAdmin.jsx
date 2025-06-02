@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { WrapperHeader, WrapperUploadFile } from './style'
+import React, { useState } from 'react'
+import { WrapperHeader } from './style'
 import { Button, Form, Space} from 'antd'
-import { DeleteTwoTone, EditTwoTone, SearchOutlined } from '@ant-design/icons'
+import { SearchOutlined } from '@ant-design/icons'
 import TableComponent from '../TableComponent/TableComponent'
 import InputComponent from '../InputComponent/InputComponent'
-import DrawerComponent from '../DrawerComponent/DrawerComponent'
-import Loading from '../LoadingComponent/Loading'
-import ModalComponent from '../ModalComponent/ModalComponent'
-import { getBase64 } from '../../utils'
-import * as message from '../Message/Message'
 import { useQuery } from '@tanstack/react-query'
 import { useSelector } from 'react-redux'
 import * as OrderService from '../../services/OrderService'
@@ -72,17 +67,6 @@ const OrderAdmin = () => {
             // setTimeout(() => searchInput.current?.select(), 100);
           }
         },
-      // render: (text) =>
-      //   searchedColumn === dataIndex ? (
-      //     <Highlighter
-      //       highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
-      //       searchWords={[searchText]}
-      //       autoEscape
-      //       textToHighlight={text ? text.toString() : ''}
-      //     />
-      //   ) : (
-      //     text
-      //   ),
     });
   
     const columns = [
@@ -105,28 +89,10 @@ const OrderAdmin = () => {
         ...getColumnSearchProps('address')
       },
       {
-        title: 'Paided',
-        dataIndex: 'isPaid',
-        sorter: (a, b) => a.isPaid.length - b.isPaid.length,
-        ...getColumnSearchProps('isPaid')
-      },
-      {
-        title: 'Shipped',
-        dataIndex: 'isDelivered',
-        sorter: (a, b) => a.isDelivered.length - b.isDelivered.length,
-        ...getColumnSearchProps('isDelivered')
-      },
-      {
-        title: 'Payment Method',
-        dataIndex: 'paymentMethod',
-        sorter: (a, b) => a.paymentMethod.length - b.paymentMethod.length,
-        ...getColumnSearchProps('paymentMethod')
-      },
-      {
         title: 'Total Price',
         dataIndex: 'totalPrice',
         sorter: (a, b) => a.totalPrice.length - b.totalPrice.length,
-        ...getColumnSearchProps('totalPrice')
+        ...getColumnSearchProps('totalPrice'),
       },
     ];
   const dataTable = orders?.data?.length && orders?.data?.map((order) => {

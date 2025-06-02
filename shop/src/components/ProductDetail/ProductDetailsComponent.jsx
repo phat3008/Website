@@ -108,19 +108,19 @@ const ProductDetailsComponent = ({ idProduct }) => {
           <Image src={productsDetails?.image || ImageProduct} alt="image product" preview={false} />
           <Row style={{ padding: '10px', justifyContent: 'space-between' }}>
             <WrapperStyleColImage span={4}>
-              <WrapperStyleImageSmall src={ImageProductSmall} alt="image small" preview={false} />
+              <WrapperStyleImageSmall src={productsDetails?.image || ImageProduct} alt="image product" preview={false} />
             </WrapperStyleColImage>
 
             <WrapperStyleColImage span={4}>
-              <WrapperStyleImageSmall src={ImageProductSmall} alt="image small" preview={false} />
+              <WrapperStyleImageSmall src={productsDetails?.image || ImageProduct} alt="image product" preview={false} />
             </WrapperStyleColImage>
 
             <WrapperStyleColImage span={4}>
-              <WrapperStyleImageSmall src={ImageProductSmall} alt="image small" preview={false} />
+              <WrapperStyleImageSmall src={productsDetails?.image || ImageProduct} alt="image small" preview={false} />
             </WrapperStyleColImage>
-
+    
             <WrapperStyleColImage span={4}>
-              <WrapperStyleImageSmall src={ImageProductSmall} alt="image small" preview={false} />
+              <WrapperStyleImageSmall src={productsDetails?.image || ImageProduct} alt="image small" preview={false} />
             </WrapperStyleColImage>
           </Row>
         </Col>
