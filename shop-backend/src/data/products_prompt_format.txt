@@ -1,0 +1,98 @@
+1. **Tên:** Mạch nháy đuổi ARGB WS2811 1903 ánh sáng trắng  
+**Loại:** Mạch điều khiển LED  
+**Giá:** 75,000 VND  
+**Số lượng còn lại:** 98  
+**Đánh giá:** 4.5 sao  
+**Mô tả:** - Điện áp làm việc: 12-24VDC (cấp nguồn theo điện áp của led) - Số lượng led: 2048 Pixels (mặc định 80 pixels) - Hiệu ứng: 11 hiệu ứng - Lưu chế độ khi tắt nguồn - Khoảng cách điều khiển: <15m - Pin remote: Pin 12V 27A - Trọng lượng bộ sản phẩm: 65g - Bộ sản phẩm gồm: 1 mạch thu + Remote 3 phím + pin và keo dán kèm theo  
+**Giảm giá:** 5%  
+**Đã bán:** 2
+
+2. **Tên:** Bộ driver led WS2811 WS2812 3 nút SP002E 600 điểm ảnh Đầu vào 2 dây  
+**Loại:** Mạch điều khiển LED  
+**Giá:** 55,000 VND  
+**Số lượng còn lại:** 100  
+**Đánh giá:** 4.5 sao  
+**Mô tả:** - Đầu vào: 2 dây đỏ đen - Đầu ra SM3P - Điện áp hoạt động: DC 5 - 24VDC (cấp nguồn theo điện áp của LED) - Sử dụng cho các loại led: ws2812b, ws2811, 1903… - 68 chế độ - Có thể kiểm soát lên đến 600 điểm ảnh - Có thể điều chỉnh được tốc độ hiệu ứng - Có chế độ chạy tự động (nhấn giữ đồng thời 2 nút MODE+ và MODE -)  
+**Giảm giá:** 2%  
+**Đã bán:** 0
+
+3. **Tên:** Bộ driver led WS2811 WS2812 3 nút SP002E 600 điểm ảnh Đầu vào Jack DC  
+**Loại:** Mạch điều khiển LED  
+**Giá:** 51,000 VND  
+**Số lượng còn lại:** 100  
+**Đánh giá:** 4.2 sao  
+**Mô tả:** - Đầu vào: Jack DC 5.5×2.1mm - Đầu ra SM3P - Điện áp hoạt động: DC 5 - 24VDC (cấp nguồn theo điện áp của LED) - Sử dụng cho các loại led: ws2812b, ws2811, 1903… - 68 chế độ - Có thể kiểm soát lên đến 600 điểm ảnh - Có thể điều chỉnh được tốc độ hiệu ứng - Có chế độ chạy tự động (nhấn giữ đồng thời 2 nút MODE+ và MODE -)  
+**Giảm giá:** 2%  
+**Đã bán:** 0
+
+4. **Tên:** Bộ điều khiển Led RGBW RF 28 phím 5-24V  
+**Loại:** Mạch điều khiển LED  
+**Giá:** 89,000 VND  
+**Số lượng còn lại:** 99  
+**Đánh giá:** 4 sao  
+**Mô tả:** - Tên sản phẩm: Bộ điều khiển RGBW RF Mini không dây - Model: RF-M4 - Điện áp cung cấp điện: DC5 ~ 24V (cấp theo điện áp của led) - Dòng điện đầu ra: <2A / CH tối đa: 6A  - Remote 28 phím, khoảng cách điều khiển lên tới 20 mét  - Công suất đầu ra: Tối đa: 5V: <30W, 12V: <72W, 24V: <144W - Phương thức kết nối: cực dương chung - Công suất tiêu thụ tĩnh: <0,5W - Nhiệt độ làm việc: -20 ~ 60 ℃ - Kích thước bộ điều khiển: L55,7 × W16,6 × H10,7mm - Trọng lượng tịnh: 40g - Tổng trọng lượng : 45g - Bộ sản phẩm gồm: 1 mạch thu + 1 remote + sách hdsd  
+**Giảm giá:** 1%  
+**Đã bán:** 1
+
+5. **Tên:** Bộ điều khiển Led RGBW RF 40 phím 5-24VDC  
+**Loại:** Mạch điều khiển LED  
+**Giá:** 120,000 VND  
+**Số lượng còn lại:** 100  
+**Đánh giá:** 3.9 sao  
+**Mô tả:** - Loại led điều khiển: + Led RGB 4 chân + Led RGBW 5 chân - Điện áp cung cấp điện: 5V~12V ~ 24VDC (cấp nguồn theo điện áp led) - Dòng điện định mức đầu ra: 4x4A - Công suất đầu ra: 5V <40W, 12V <96W, 24V <192W - Đầu ra theo thứ tự: Dương nguồn, Xanh lá, Đỏ, Xanh dương, Trắng  - Điều khiển tối đa 15 mét  - Tổ hợp phím RGB: + 20 màu tĩnh (có thể chỉnh độ sáng) + 6 chế độ động (có thể chỉnh tốc độ) - Tổ hợp phím W (led trắng): + điều chỉnh độ sáng từng nấc + thay đổi độ sáng nhanh: 25%, 50%, 75%, 100% - Pin remote: CR2032  
+**Giảm giá:** 10%  
+**Đã bán:** 0
+
+6. **Tên:** Mạch điều khiển Led WS2812B Bluetooth full màu nháy theo nhạc Đầu vào USB  
+**Loại:** Mạch điều khiển LED  
+**Giá:** 119,000 VND  
+**Số lượng còn lại:** 100  
+**Đánh giá:** 3.9 sao  
+**Mô tả:** - Loại: điều khiển từ xa bluetooth có app - Đầu vào: cổng usb  - Màu sắc: 16 triệu màu  - APP hỗ trợ: Android 4.4 / IOS 10.0 trở lên - Led hỗ trợ: WS2812 - Nguồn cấp: 5~24VDC (cấp theo điện áp của led) - Hỗ trợ: 340 Pixcel tương đương 5 mét led (loại 60 led / mét)  - Trọng lượng: 25g - Bộ sản phẩm gồm: 1 mạch điều khiển + giấy hdsd (chưa gồm nguồn và led)  
+**Giảm giá:** 5%  
+**Đã bán:** 0
+
+7. **Tên:** Mạch điều khiển Led WS2812B Bluetooth full màu nháy theo nhạc Đầu vào Jack DC  
+**Loại:** Mạch điều khiển LED  
+**Giá:** 11,900,011 VND  
+**Số lượng còn lại:** 100  
+**Đánh giá:** 4.5 sao  
+**Mô tả:** - Loại: điều khiển từ xa bluetooth có app - Đầu vào: jack dc  - Màu sắc: 16 triệu màu  - APP hỗ trợ: Android 4.4 / IOS 10.0 trở lên - Led hỗ trợ: WS2812 - Nguồn cấp: 5~24VDC (cấp theo điện áp của led) - Hỗ trợ: 340 Pixcel tương đương 5 mét led (loại 60 led / mét)  - Trọng lượng: 25g - Bộ sản phẩm gồm: 1 mạch điều khiển + giấy hdsd (chưa gồm nguồn và led)  
+**Giảm giá:** 5%  
+**Đã bán:** 0
+
+8. **Tên:** Bộ điều khiển Led RGB 17 Key 5-24VDC  
+**Loại:** Mạch điều khiển LED  
+**Giá:** 54,000 VND  
+**Số lượng còn lại:** 100  
+**Đánh giá:** 3.9 sao  
+**Mô tả:** - Điện áp làm việc: 5-24VDC - Dòng làm việc: Đỉnh 3 x 4A, 3 x 2A khi làm việc bình thường - Tần số của remote: 433Mhz - Khoảng cách điều khiển: > 6m không gian mở - Lưu chức năng khi mất nguồn - Nhiều chế độ nháy - Thay đổi độ sáng - Điều chỉnh được tốc độ  
+**Giảm giá:** 2%  
+**Đã bán:** 0
+
+9. **Tên:** Bộ điều khiển led đơn sắc RF 11 Key 5-24VDC  
+**Loại:** Mạch điều khiển LED  
+**Giá:** 51,000 VND  
+**Số lượng còn lại:** 100  
+**Đánh giá:** 4.5 sao  
+**Mô tả:** - Lưu chức năng khi mất nguồn - Nhiều chế độ nháy - Thay đổi độ sáng - Điều chỉnh được tốc độ  - Điện áp làm việc: 5 - 24 VDC - Công suất: 5V - 30W || 12V -72W || 24V 144W khuyên dùng không quá 50% công suất khi sd lâu dài - Loại Remote: Remote RF 433Mhz xuyên tường - Khoảng cách truyền: < 30m ở không gian mở  
+**Giảm giá:** 5%  
+**Đã bán:** 0
+
+10. **Tên:** Bộ điều khiển LED RGB nháy theo nhạc 12-24VDC  
+**Loại:** Mạch điều khiển LED  
+**Giá:** 400,000 VND  
+**Số lượng còn lại:** 50  
+**Đánh giá:** 4.5 sao  
+**Mô tả:** - Module: HX-AUDIO RGB RF 18K - Điện áp 12-24VDC (cấp theo điện áp của led) - Dòng định mức đầu ra: nhỏ hơn 4A mỗi kênh ( 3*4A) - Công suất ra: 12VDC - 192W, 24VDC - 384W - Ngõ ra: 4 kênh (dương chung) - Chế độ kết nối: dương chung - Tần số: 433,9Mhz - Tần số tín hiệu: 400Hz - Khoảng cách điều khiển nhỏ hơn 15 mét  
+**Giảm giá:** 10%  
+**Đã bán:** 0
+
+11. **Tên:** Bộ khuếch đại công suất led RGB 45A  
+**Loại:** Mạch điều khiển LED  
+**Giá:** 249,000 VND  
+**Số lượng còn lại:** 98  
+**Đánh giá:** 4.5 sao  
+**Mô tả:** - Điện áp hoạt động: 5 ~ 24VDC - Dòng điện ngõ ra: 3 x 15A - Kích thước sản phẩm: 110 x 90 x 25mm - Trọng lượng: 170g  
+**Giảm giá:** 3%  
+**Đã bán:** 2
