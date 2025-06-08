@@ -10,3 +10,24 @@ body {
 html {
   font-size: 100.5%;
 }
+
+:where(.css-dev-only-do-not-override-5uvb3z).ant-modal .ant-modal-content {
+  position: relative;
+  background: transparent;
+  background-clip: padding-box;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px 0 transparent, 0 3px 6px -4px transparent, 0 9px 28px 8px transparent;
+  pointer-events: auto;
+  padding: 20px 24px;
+}
+
+:where(.css-dev-only-do-not-override-5uvb3z).ant-modal .ant-modal-close-x {
+  display: none;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 32px;
+  justify-content: center;
+  text-transform: none;
+  text-rendering: auto;
+}

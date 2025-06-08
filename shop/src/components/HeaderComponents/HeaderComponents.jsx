@@ -15,6 +15,8 @@ import { resetUser } from '../../redux/slides/userSlide'
 import Loading from '../LoadingComponent/Loading';
 import { isPending } from '@reduxjs/toolkit';
 import { searchProduct } from '../../redux/slides/productSilde';
+import ChatBot from '../Message/ChatBot';
+import { Modal } from 'antd';
 const  { Search } = Input
 
 const HeaderComponents = ({isHiddenSearch = false, isHiddenCart = false}) => {
@@ -25,6 +27,7 @@ const HeaderComponents = ({isHiddenSearch = false, isHiddenCart = false}) => {
   const [userAvatar, setUserAvatar] = useState('')
   const [search, setSearch] = useState('')
   const [isOpenPopup, setIsOpenPopup] = useState(false)
+  const [openChatBot, setOpenChatBot] = useState(false);
   const order = useSelector((state) => state.order)
   const [loading, setLoading] = useState(false)
   const handleNavigateLogin = () => {
@@ -91,9 +94,9 @@ const handleLogout = async () =>{
         {!isHiddenSearch && (
           <Col span={13}>
             <ButtonInputSearch
-            size="large"
-            variant="borderless"
-            textButton="Tìm kiếm"
+              size="large"
+              variant="borderless"
+              textButton="Tìm kiếm"
               placeholder="Nhập tên sản phẩm bạn muốn tìm kiếm"
               onChange={onSearch}
             />
@@ -139,6 +142,33 @@ const handleLogout = async () =>{
         )}
         </Col>
       </WrapperHeader>
+      {/* Modal Chatbot */}
+      <Modal
+        open={openChatBot}
+        onCancel={() => setOpenChatBot(false)}
+        footer={null}
+        closable={false}
+        width={540}
+        bodyStyle={{ padding: 0, borderRadius: 12 }}
+        destroyOnClose
+      >
+        <ChatBot />
+      </Modal>
+      {/* Nút icon Chatbot nổi ở góc dưới bên phải */}
+      <Button
+        type="primary"
+        shape="circle"
+        icon={<img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="chatbot" style={{ width: 28, height: 28 }} />}
+        size="large"
+        style={{
+          position: 'fixed',
+          right: 32,
+          bottom: 32,
+          zIndex: 1000,
+          boxShadow: '0 4px 16px rgba(0,0,0,0.15)'
+        }}
+        onClick={() => setOpenChatBot(true)}
+      />
     </div>
   )
 }

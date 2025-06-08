@@ -12,6 +12,7 @@ import TypeProductPage from "../pages/TypeProductPage/TypeProductPage";
 import OrderSuccess from "../pages/OrderSuccess/OrderSuccess";
 import MyOrderPage from "../pages/MyOrder/MyOrder";
 import DetailsOrderPage from "../pages/DetailsOrderPage/DetailsOrderPage";
+import ChatBot from "../components/Message/ChatBot";
 
 export const routes = [
     {
@@ -79,6 +80,11 @@ export const routes = [
         page: AdminPage,
         isShowHeader: false,
         isPrivate: true
+    },
+    {
+        path: '/chatbot/stream',
+        page: ChatBot,
+        isShowHeader: true
     },
     {
         path:'*',

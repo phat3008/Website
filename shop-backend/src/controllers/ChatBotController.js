@@ -23,7 +23,7 @@ exports.streamMessage = async (req, res) => {
     const product_list = fs.readFileSync(filePath, 'utf8');
 
     const prompt_intro = (
-        "Bạn là chuyên gia tư vấn thiết bị điện tử (mạch điều khiển LED).\n\n" +
+        "Bạn là chuyên gia tư vấn thiết bị điện tử.\n\n" +
         "🎯 Nhiệm vụ:\n" +
         "- Chỉ dựa vào danh sách sản phẩm bên dưới để tư vấn.\n" +
         "- Nếu không có sản phẩm phù hợp, hãy trả lời: `Xin lỗi, hiện tại cửa hàng không có sản phẩm phù hợp với nhu cầu của bạn.`\n" +
@@ -44,7 +44,11 @@ exports.streamMessage = async (req, res) => {
         "Trả về kết quả dưới dạng Markdown, bao gồm:\n" +
         "- Một đoạn văn tư vấn ngắn gọn.\n" +
         "- Một tiêu đề `###` hoặc `####`.\n" +
-        "- Danh sách sản phẩm gợi ý với dấu `-`, hiển thị **tên sản phẩm** và **giá bán**.\n\n" +
+        "#### Dưới đây là một số sản phẩm phù hợp với nhu cầu của bạn:\n\n"+
+        "- **Tên sản phẩm:** Tên A  \n"+
+        "  **Chi tiết sản phẩm:** [Xem chi tiết](http://localhost:3000/product-details/id sản phẩm a)\n"+
+        "- **Tên sản phẩm:** Tên B  \n"+
+        "  **Chi tiết sản phẩm:** [Xem chi tiết](http://localhost:3000/product-details/id sản phẩm bb)\n\n"+
         "Chỉ trả về Markdown, không thêm chú thích ngoài."
     );
       
