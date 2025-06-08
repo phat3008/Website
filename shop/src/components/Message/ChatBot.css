@@ -1,0 +1,28 @@
+.markdown-container a {
+    color: #fa541c;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.markdown-container a:hover {
+    text-decoration: underline;
+}
+
+.markdown-container h3,
+.markdown-container h4 {
+    margin: 8px 0;
+    color: #222;
+}
+
+.markdown-container ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 8px 0;
+}
+
+.markdown-container li {
+    margin-bottom: 4px;
+}
+
+.markdown-container strong {
+    font-weight: 600; }

@@ -20,11 +20,13 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-export-table-to-excel": "^1.0.6",
+    "react-markdown": "^10.1.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^6.30.0",
     "react-scripts": "5.0.1",
     "react-slick": "^0.30.3",
     "redux-persist": "^6.0.0",
+    "remark-gfm": "^4.0.1",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.17",
     "web-vitals": "^2.1.4"
